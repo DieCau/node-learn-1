@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   ]);
 });
 
-
+ // OBTENER UN PRODUCTO POR MEDIO DE SU ID CON RUTA COMPLEJA
 router.get('/:categoryId/products/:productId', (req, res) => {
   const { categoryId, productId } = req.params;
   res.json({
@@ -23,7 +23,7 @@ router.get('/:categoryId/products/:productId', (req, res) => {
   })
 
 })
-
+// GET - OBTENER UN PRODUCTO POR MEDIO DE SU ID
 router.get('/:id', (req,res) =>{
   const { id } = req.params;
   res.json({
@@ -31,5 +31,42 @@ router.get('/:id', (req,res) =>{
     categoryId: faker.commerce.productAdjective()
   });
 });
+
+
+// POST CATEGORY
+router.post('/', (req, res) => {
+  const body = req.body;
+  res.json({
+    message: 'created',
+    data: body
+  })
+})
+
+
+// PUT
+router.put('/:id', (req,res) =>{
+  const { id } = req.params;
+  const body = req.body;
+
+  res.json({
+    message: 'deleted',
+    data: body,
+    id,
+  });
+});
+
+
+// DELETE
+router.delete('/:id', (req,res) =>{
+  const { id } = req.params;
+
+  res.json({
+    message: 'deleted',
+    id,
+  });
+});
+
+
+
 
 module.exports = router;
